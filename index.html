@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prześlij zdjęcie i zobacz wideo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(120deg, #f6d365, #fda085, #a1c4fd, #c2e9fb, #fbc2eb);
+            background-size: 400% 400%;
+            animation: gradientAnimation 3s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 50% 50%; }
+            50% { background-position: 100% 50%; }
+            75% { background-position: 50% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            z-index: 1;
+            transition: all 0.5s ease;
+        }
+
+        .container:hover {
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 25px;
+            background: #fda085;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #f6d365;
+        }
+
+        input[type="file"] {
+            display: block;
+            margin: 20px auto;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 56.25%;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Formularz dla pierwszego zdjęcia -->
+        <form id="uploadForm1" enctype="multipart/form-data" class="fade-in">
+            <label for="fileInput1">Proszę wysłać zdjęcie OGRODU BOTNAICZNEGO:</label>
+            <input type="file" id="fileInput1" accept="image/*" required>
+            <button type="submit">Wyślij</button>
+        </form>
+        <!-- Kontener dla pierwszego filmu -->
+        <div id="videoContainer1" class="hidden fade-in">
+            <h2>Dziękuję za przesłanie zdjęcia! Oto  filmik:</h2>
+            <div class="video-container">
+                <iframe id="videoPlayer1" src="https://www.youtube.com/embed/mSh7iajDzAY" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <button id="nextButton1" class="hidden">Dalej</button>
+        </div>
+
+        <!-- Formularz dla drugiego zdjęcia -->
+        <form id="uploadForm2" enctype="multipart/form-data" class="hidden fade-in">
+            <label for="fileInput2">Proszę wysłać zdjęcie BASZTY SIEDMIU PŁASZCZY:</label>
+            <input type="file" id="fileInput2" accept="image/*" required>
+            <button type="submit">Wyślij</button>
+        </form>
+        <!-- Kontener dla drugiego filmu -->
+        <div id="videoContainer2" class="hidden fade-in">
+            <h2>Dziękuję za przesłanie zdjęcia! Oto drugi filmik:</h2>
+            <div class="video-container">
+                <iframe id="videoPlayer2" src="https://www.youtube.com/embed/JICtiDQWyXY" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <button id="nextButton2" class="hidden">Dalej</button>
+        </div>
+
+        <!-- Formularz dla trzeciego zdjęcia -->
+        <form id="uploadForm3" enctype="multipart/form-data" class="hidden fade-in">
+            <label for="fileInput3">Proszę wysłać zdjęcie WAŁÓW CHROBREGO:</label>
+            <input type="file" id="fileInput3" accept="image/*" required>
+            <button type="submit">Wyślij</button>
+        </form>
+        <!-- Kontener dla trzeciego filmu -->
+        <div id="videoContainer3" class="hidden fade-in">
+            <h2>Dziękuję za przesłanie zdjęcia! Oto trzeci filmik:</h2>
+            <div class="video-container">
+                <iframe id="videoPlayer3" src="https://www.youtube.com/embed/zQRcn_cL8U4" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <button id="nextButton3" class="hidden">Dalej</button>
+        </div>
+
+        <!-- Formularz dla czwartego zdjęcia -->
+        <form id="uploadForm4" enctype="multipart/form-data" class="hidden fade-in">
+            <label for="fileInput4">Proszę wysłać zdjęcie WIEŻY BISMARCKA:</label>
+            <input type="file" id="fileInput4" accept="image/*" required>
+            <button type="submit">Wyślij</button>
+        </form>
+        <!-- Kontener dla czwartego filmu -->
+        <div id="videoContainer4" class="hidden fade-in">
+            <h2>Dziękuję za przesłanie zdjęcia! Oto czwarty filmik:</h2>
+            <div class="video-container">
+                <iframe id="videoPlayer4" src="https://www.youtube.com/embed/5KQnjZD-N2I" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <button id="nextButton4" class="hidden">Dalej</button>
+        </div>
+
+        <!-- Kontener z pytaniem o opinię -->
+        <div id="questionContainer" class="hidden fade-in">
+            <h2>Czy podobała Ci się gra?</h2>
+            <button id="yesButton">Tak</button>
+            <button id="noButton">Nie</button>
+        </div>
+        <!-- Kontener dla ostatniego filmu -->
+        <div id="finalVideoContainer" class="hidden fade-in">
+            <h2>Dziękujemy! Oto Twój filmik:</h2>
+            <div class="video-container">
+                <iframe id="finalVideoPlayer" src="https://www.youtube.com/embed/OyDyOweu-PA" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showNextElement(currentElement, nextElement) {
+            document.getElementById(currentElement).classList.add('hidden');
+            document.getElementById(nextElement).classList.remove('hidden');
+        }
+
+        function handleFormSubmission(formId, videoContainerId, nextButtonId, nextFormId) {
+            document.getElementById(formId).addEventListener('submit', function(event) {
+                event.preventDefault();
+                showNextElement(formId, videoContainerId);
+                document.getElementById(nextButtonId).classList.remove('hidden');
+            });
+
+            document.getElementById(nextButtonId).addEventListener('click', function() {
+                showNextElement(videoContainerId, nextFormId);
+            });
+        }
+
+        handleFormSubmission('uploadForm1', 'videoContainer1', 'nextButton1', 'uploadForm2');
+        handleFormSubmission('uploadForm2', 'videoContainer2', 'nextButton2', 'uploadForm3');
+        handleFormSubmission('uploadForm3', 'videoContainer3', 'nextButton3', 'uploadForm4');
+        handleFormSubmission('uploadForm4', 'videoContainer4', 'nextButton4', 'questionContainer');
+
+        document.getElementById('yesButton').addEventListener('click', function() {
+            showNextElement('questionContainer', 'finalVideoContainer');
+        });
+
+        document.getElementById('noButton').addEventListener('click', function() {
+            this.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
